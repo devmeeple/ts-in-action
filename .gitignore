@@ -1,0 +1,8 @@
+# dependency
+node_modules/
+
+# IDE
+.idea/
+
+# build output
+dist/
