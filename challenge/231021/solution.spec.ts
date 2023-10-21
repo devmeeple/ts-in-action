@@ -1,4 +1,4 @@
-import {solution} from "./solution";
+    import {solution} from "./solution";
 
 describe('231021 문제풀이', () => {
     describe('소문자로 바꾸기', () => {
