@@ -15,47 +15,47 @@ type NewNumberType = number;
 
 type MaleOrFemale = 'male' | 'female';
 
-const stringVar:NewStringType = 'test';
+const stringVar: NewStringType = 'test';
 
 type IdolType = {
-    name: string;
-    year?: number;
+  name: string;
+  year?: number;
 };
 
 const yuJin: IdolType = {
-    name: '안유진',
-    // year: 2003,
+  name: '안유진',
+  // year: 2003,
 };
 
 /**
  * Interface
  */
 interface IdolInterface {
-    name: string;
-    year: number;
+  name: string;
+  year: number;
 }
 
 const yuJin2: IdolInterface = {
-    name: '안유진',
-    year: 2003,
+  name: '안유진',
+  year: 2003,
 };
 
 interface IdolIT {
-    name: NewStringType;
-    year: NewNumberType;
+  name: NewStringType;
+  year: NewNumberType;
 }
 
 const yuJin3: IdolIT = {
-    name: '안유진',
-    year: 2003,
+  name: '안유진',
+  year: 2003,
 };
 
 interface IdolOptional {
-    name: string;
-    year?: number;
+  name: string;
+  year?: number;
 }
 
 const yuJin4: IdolOptional = {
-    name: '안유진',
-    year: 2003,
+  name: '안유진',
+  year: 2003,
 };

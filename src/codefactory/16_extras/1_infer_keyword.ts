@@ -13,15 +13,20 @@
 // Flattening -> Array를 벗겨낼때
 // string[] -> string
 // string[][] -> string[]
-type Flatten<Type> = Type extends Array<infer ElementType> ? ElementType[][] : Type;
-type Flatten2<Type> = Type extends (infer ElementType)[] ? ElementType[][][] : Type;
+type Flatten<Type> =
+  Type extends Array<infer ElementType> ? ElementType[][] : Type;
+type Flatten2<Type> = Type extends (infer ElementType)[]
+  ? ElementType[][][]
+  : Type;
 
 type StringArray = Flatten2<string[]>;
-type NumberArray = Flatten2<Number[]>;
+type NumberArray = Flatten2<number[]>;
 type TwoDArray = Flatten2<boolean[][]>;
 
 // 2) Return Type 추론
-type InferReturnType<Type> = Type extends (...args: any[]) => infer ReturnType ? ReturnType : Type;
+type InferReturnType<Type> = Type extends (...args: any[]) => infer ReturnType
+  ? ReturnType
+  : Type;
 
 type NumberArray2 = InferReturnType<number[]>;
 

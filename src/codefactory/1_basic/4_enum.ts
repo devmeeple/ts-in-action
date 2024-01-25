@@ -12,18 +12,18 @@
  * INITIAL - 초기상태
  */
 function runWork() {
-    let state = 'INITIAL';
-    
-    try {
-        state = 'LOADING';
-        // 작업을 한다.
+  let state = 'INITIAL';
 
-        state = 'DONE';
-    } catch (e) {
-        state = 'ERROR';
-    } finally {
-        return state;
-    }
+  try {
+    state = 'LOADING';
+    // 작업을 한다.
+
+    state = 'DONE';
+  } catch (e) {
+    state = 'ERROR';
+  } finally {
+    return state;
+  }
 }
 
 console.log(runWork() === 'DONNE');
@@ -34,42 +34,42 @@ const errorState = 'ERROR';
 const initialState = 'INITIAL';
 
 function runWork2() {
-    let state = initialState;
+  let state = initialState;
 
-    try {
-        state = loadingState;
-        // 작업을 한다.
+  try {
+    state = loadingState;
+    // 작업을 한다.
 
-        state = doneState;
-    } catch (e) {
-        state = errorState;
-    } finally {
-        return state;
-    }
+    state = doneState;
+  } catch (e) {
+    state = errorState;
+  } finally {
+    return state;
+  }
 }
 
 console.log(runWork2() === doneState);
 
 enum State {
-    DONE = 'DONE',
-    LOADING = 'LOADING',
-    INITIAL = 'INITIAL',
-    ERROR = 'ERROR',
+  DONE = 'DONE',
+  LOADING = 'LOADING',
+  INITIAL = 'INITIAL',
+  ERROR = 'ERROR',
 }
 
 function runWork3() {
-    let state = State.INITIAL;
+  let state = State.INITIAL;
 
-    try {
-        state = State.LOADING;
-        // 작업을 한다.
+  try {
+    state = State.LOADING;
+    // 작업을 한다.
 
-        state = State.DONE;
-    } catch (e) {
-        state = State.ERROR;
-    } finally {
-        return state;
-    }
+    state = State.DONE;
+  } catch (e) {
+    state = State.ERROR;
+  } finally {
+    return state;
+  }
 }
 
 console.log(runWork3() === State.DONE);

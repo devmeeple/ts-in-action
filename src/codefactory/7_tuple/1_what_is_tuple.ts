@@ -1,43 +1,31 @@
 /**
  * Tuple
  */
-let iveTopMembers: string[] = ['안유진', '장원영', '레이'];
+const iveTopMembers: string[] = ['안유진', '장원영', '레이'];
 
-let numberAndStringTuple: [number, string] = [
-    23,
-    '미플',
-];
+const numberAndStringTuple: [number, string] = [23, '미플'];
 
 numberAndStringTuple.push('아이유');
 console.log(numberAndStringTuple);
 
-let unmodifiableTuple: readonly [number, string] = [
-    23,
-    '미플',
-];
+const unmodifiableTuple: readonly [number, string] = [23, '미플'];
 
 // unmodifiableTuple.push();
 
 /**
  * Tuple 유추하기
  */
-let actress = ['김고은', '박소담', '전여빈'];
+const actress = ['김고은', '박소담', '전여빈'];
 
-let actressTuple = ['김고은', '박소담', '전여빈'] as const;
+const actressTuple = ['김고은', '박소담', '전여빈'] as const;
 const actressTupleConst = ['김고은', '박소담', '전여빈'] as const;
 
-let stringArray: string[] = [
-    ...actressTuple,
-    ...actressTupleConst,
-];
+const stringArray: string[] = [...actressTuple, ...actressTupleConst];
 
 /**
  * Named Tuple
  */
-const namedTuple: [name: string, age: number] = [
-    '미플',
-    3,
-];
+const namedTuple: [name: string, age: number] = ['미플', 3];
 
 /**
  * Assigning Tuple to Tuple
@@ -50,17 +38,14 @@ const tuple2: [number, number] = [1, 2];
 // let tuple3: [boolean, boolean] = tuple1;
 // let tuple4: [number, number, number] = tuple2;
 
-let tuple5: [number, number] = tuple2;
+const tuple5: [number, number] = tuple2;
 
 /**
  * Tuple과 Array의 관계
  */
-let ive: [string, string] = [
-    '장원영',
-    '안유진',
-];
+const ive: [string, string] = ['장원영', '안유진'];
 
-let stringArr: string[] = ive;
+const stringArr: string[] = ive;
 
 // let ive2: [string, string] = stringArr;
 
@@ -68,7 +53,7 @@ let stringArr: string[] = ive;
  * Multi Dimensional Tuple
  */
 const tuple2D: [string, number][] = [
-    ['미플', 3],
-    ['아이유', 31],
-    ['김고은', 30],
+  ['미플', 3],
+  ['아이유', 31],
+  ['김고은', 30],
 ];

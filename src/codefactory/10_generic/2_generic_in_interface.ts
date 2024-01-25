@@ -2,13 +2,13 @@
  * Generic in Interface
  */
 interface Cache<T> {
-    data: T[];
-    lastUpdate: Date;
+  data: T[];
+  lastUpdate: Date;
 }
 
 const cache1: Cache<string> = {
-    data: ['data1', 'data2'],
-    lastUpdate: new Date(),
+  data: ['data1', 'data2'],
+  lastUpdate: new Date(),
 };
 
 // const cache2: Cache<number> = {
@@ -17,7 +17,7 @@ const cache1: Cache<string> = {
 // }
 
 interface DefaultGeneric<T = string> {
-    data: T[];
+  data: T[];
 }
 
 // const cache3: DefaultGeneric = {

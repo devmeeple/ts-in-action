@@ -4,18 +4,18 @@
 
 // Object 선언할 때
 interface IObject {
-    x: number;
-    y: number;
+  x: number;
+  y: number;
 }
 
 type TObject = {
-    x: number;
-    y: number;
-}
+  x: number;
+  y: number;
+};
 
 // function을 선언할 때
 interface IFunction {
-    (x: number, y: number): number;
+  (x: number, y: number): number;
 }
 
 type TFunction = (x: number, y: number) => number;
@@ -27,7 +27,6 @@ type TFunction = (x: number, y: number) => number;
 
 // (1) primitive 타입 선언하기
 type Name = string;
-
 
 // (2) union 타입 선언하기
 type UnionType = string | number;
@@ -42,16 +41,16 @@ type TupleType = [number, string];
 
 // interface merging
 interface IRectangle {
-    height: number;
+  height: number;
 }
 
 interface IRectangle {
-    width: number;
+  width: number;
 }
 
-let rectangle: IRectangle = {
-    height: 200,
-    width: 100,
+const rectangle: IRectangle = {
+  height: 200,
+  width: 100,
 };
 
 // type TRectangle = {
@@ -66,43 +65,42 @@ let rectangle: IRectangle = {
  * Interface Merging
  */
 class Review {
-    // 프로퍼티
-    getY = (x: number) => { return x };
+  // 프로퍼티
+  getY = (x: number) => {
+    return x;
+  };
 
-    // 메서드
-    getX(x: number) {
-        return x;
-    }
+  // 메서드
+  getX(x: number) {
+    return x;
+  }
 }
 
 interface GetXnY {
-    getX: (x: number) => number;
-    getY: (y: number) => number;
+  getX: (x: number) => number;
+  getY: (y: number) => number;
 }
 
 interface GetXnY {
-    getX: (x: number) => number;
-    // getY: (y: number) => number;
+  getX: (x: number) => number;
+  // getY: (y: number) => number;
 }
 
 interface GetXnY2 {
-    getX(x: number): number;
-    getY(y: number): number;
+  getX(x: number): number;
+  getY(y: number): number;
 }
 
 interface GetXnY2 {
-    getX(x: number): number;
-    getY(y: string): number;
+  getX(x: number): number;
+  getY(y: string): number;
 }
 
 const testMethod: GetXnY2 = {
-    getX(x) {
-        return x;
-    },
-    getY(y) {
-        return 1;
-    }
+  getX(x) {
+    return x;
+  },
+  getY(y) {
+    return 1;
+  },
 };
-
-
-

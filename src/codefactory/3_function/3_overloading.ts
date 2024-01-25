@@ -8,7 +8,11 @@
  */
 
 function stringOrStrings(members: string): string;
-function stringOrStrings(member1: string, member2: string, member3: string): string;
+function stringOrStrings(
+  member1: string,
+  member2: string,
+  member3: string,
+): string;
 // function stringOrStrings(): string;
 
 /**
@@ -20,12 +24,16 @@ function stringOrStrings(member1: string, member2: string, member3: string): str
  * 각각 아이돌을 각각의 파라미터 값으로 입력한다.
  * 예) '안유진', '장원영', '레이'
  */
-function stringOrStrings(memberOrMembers: string, member2?: string, member3?: string): string {
-    if (member2 && member3) {
-        return `아이브: ${memberOrMembers}, ${member2}, ${member3}`;
-    } else {
-        return `아이브: ${memberOrMembers}`;
-    }
+function stringOrStrings(
+  memberOrMembers: string,
+  member2?: string,
+  member3?: string,
+): string {
+  if (member2 && member3) {
+    return `아이브: ${memberOrMembers}, ${member2}, ${member3}`;
+  } else {
+    return `아이브: ${memberOrMembers}`;
+  }
 }
 
 console.log(stringOrStrings('안유진, 장원영, 레이'));

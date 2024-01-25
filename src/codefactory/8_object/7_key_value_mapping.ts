@@ -3,38 +3,41 @@
  */
 
 enum State {
-    loading,
-    done,
-    error,
+  loading,
+  done,
+  error,
 }
 
 type GlobalApiStatus = {
-    getUser: State;
-    paginateUsers: State | undefined;
-    banUser: State | null;
-    getPosts: State;
+  getUser: State;
+  paginateUsers: State | undefined;
+  banUser: State | null;
+  getPosts: State;
 };
 
 type UserApiStatus = {
-    getUser: State;
-    paginateUsers: State | undefined;
-    banUser: State | null;
+  getUser: State;
+  paginateUsers: State | undefined;
+  banUser: State | null;
 };
 
 type UserApiStatus2 = {
-    getUser: GlobalApiStatus['getUser'];
-    paginatedUsers: GlobalApiStatus['paginateUsers'];
-    banUser: GlobalApiStatus['banUser'];
+  getUser: GlobalApiStatus['getUser'];
+  paginatedUsers: GlobalApiStatus['paginateUsers'];
+  banUser: GlobalApiStatus['banUser'];
 };
 
 type UserApiStatus3 = {
-    [k in 'getUser' | 'paginateUsers' | 'banUser']: GlobalApiStatus[k];
-    // getUser:
-    // paginatedUsers:
-    // banUser:
+  [k in 'getUser' | 'paginateUsers' | 'banUser']: GlobalApiStatus[k];
+  // getUser:
+  // paginatedUsers:
+  // banUser:
 };
 
-type PickedUserApiStatus = Pick<GlobalApiStatus, 'getUser' | 'banUser' | 'paginateUsers'>;
+type PickedUserApiStatus = Pick<
+  GlobalApiStatus,
+  'getUser' | 'banUser' | 'paginateUsers'
+>;
 
 type OmitUserApiStatus = Omit<GlobalApiStatus, 'getPosts'>;
 
@@ -46,28 +49,27 @@ type AllKeys = keyof GlobalApiStatus;
 const key: AllKeys = 'getUser';
 
 type KeyOfUserApiStatus = {
-    [k in keyof GlobalApiStatus]: GlobalApiStatus[k];
+  [k in keyof GlobalApiStatus]: GlobalApiStatus[k];
 };
 
 type KeyOfUserApiStatus2 = {
-    [k in Exclude<keyof GlobalApiStatus, 'getPosts'>]: GlobalApiStatus[k];
+  [k in Exclude<keyof GlobalApiStatus, 'getPosts'>]: GlobalApiStatus[k];
 };
 
 type KeyOfUserApiStatus3 = {
-    [k in Exclude<keyof GlobalApiStatus, 'getPosts'>]?: GlobalApiStatus[k];
+  [k in Exclude<keyof GlobalApiStatus, 'getPosts'>]?: GlobalApiStatus[k];
 };
 
 interface LoadingStatus {
-    type: 'loading';
-    date: string[];
+  type: 'loading';
+  date: string[];
 }
 
 interface ErrorStatus {
-    type: 'error';
-    message: string;
+  type: 'error';
+  message: string;
 }
 
 type FetchStatus = LoadingStatus | ErrorStatus;
 
 type StatusType = FetchStatus['type'];
-

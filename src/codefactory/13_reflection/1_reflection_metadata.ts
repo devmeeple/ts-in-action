@@ -4,9 +4,9 @@
 import 'reflect-metadata';
 
 const iu = {
-    name: '아이유',
-    age: 32,
-    nationality: 'korean',
+  name: '아이유',
+  age: 32,
+  nationality: 'korean',
 };
 
 console.log(iu);
@@ -36,7 +36,7 @@ Reflect.defineMetadata('meta2', 789, iu);
 console.log(Reflect.getMetadata('meta2', iu));
 console.log(Reflect.getMetadata('test-meta', iu));
 
-Reflect.defineMetadata('meta2', {name: '미플'}, iu);
+Reflect.defineMetadata('meta2', { name: '미플' }, iu);
 console.log(Reflect.getMetadata('meta2', iu));
 
 /**
@@ -55,7 +55,11 @@ console.log(Reflect.hasMetadata('object-meta', iu, 'name'));
 console.log(Reflect.getMetadataKeys(iu));
 console.log(Reflect.getMetadataKeys(iu, 'name'));
 
-Reflect.defineMetadata('prototype-data', '프로토 타입 메타에요!', Object.getPrototypeOf(iu));
+Reflect.defineMetadata(
+  'prototype-data',
+  '프로토 타입 메타에요!',
+  Object.getPrototypeOf(iu),
+);
 
 console.log(Reflect.getMetadataKeys(iu));
 console.log(Reflect.getOwnMetadataKeys(iu));

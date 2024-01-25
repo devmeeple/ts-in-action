@@ -2,28 +2,28 @@
  * Inheritance
  */
 class Parent {
-    name: string;
+  name: string;
 
-    constructor(name: string) {
-        this.name = name;
-    }
+  constructor(name: string) {
+    this.name = name;
+  }
 
-    dance() {
-        console.log(`parent: ${this.name}이 춤을 춥니다.`);
-    }
+  dance() {
+    console.log(`parent: ${this.name}이 춤을 춥니다.`);
+  }
 }
 
 class Child extends Parent {
-    age: number;
+  age: number;
 
-    constructor(name: string, age: number) {
-        super(name);
-        this.age = age;
-    }
+  constructor(name: string, age: number) {
+    super(name);
+    this.age = age;
+  }
 
-    sing() {
-        console.log(`child: ${this.name}이 노래를 부릅니다.`);
-    }
+  sing() {
+    console.log(`child: ${this.name}이 노래를 부릅니다.`);
+  }
 }
 
 const meeple = new Parent('미플');
@@ -47,20 +47,20 @@ person2 = ahri;
  * optional 프로퍼티를 유의하자
  */
 class Parent2 {
-    name: string;
+  name: string;
 
-    constructor(name: string) {
-        this.name = name;
-    }
+  constructor(name: string) {
+    this.name = name;
+  }
 }
 
 class Child2 extends Parent2 {
-    age?: number;
+  age?: number;
 
-    constructor(name: string, age?: number) {
-        super(name);
-        this.age = age;
-    }
+  constructor(name: string, age?: number) {
+    super(name);
+    this.age = age;
+  }
 }
 
 const mp2 = new Parent2('미플');

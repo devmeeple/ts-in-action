@@ -9,24 +9,24 @@ number = 10;
 // (number as any).toUpperCase();
 
 const multiplyTwo = (x: number, y: number) => {
-    return x * y;
+  return x * y;
 };
 
-let args1: any = '미플';
-let args2: any = true;
+const args1: any = '미플';
+const args2: any = true;
 
 multiplyTwo(args1, args2);
 // multiplyTwo('미플', true);
 
-let iu: any = { name: '아이유', age: 30, };
+const iu: any = { name: '아이유', age: 30 };
 iu;
 
 const callbackRunner = (x: number, y: number, callback: any) => {
-    return callback(x);
+  return callback(x);
 };
 
 const callback = (x: number, y: number) => {
-    return x * y;
+  return x * y;
 };
 
 console.log(callbackRunner(5, 4, callback));

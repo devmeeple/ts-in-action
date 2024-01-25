@@ -46,13 +46,13 @@ new anyValue();
 // new unknownValue();
 
 function isString(target: unknown): target is string {
-    return typeof target === 'string';
+  return typeof target === 'string';
 }
 
 let testVal: unknown;
 
 if (isString(testVal)) {
-    testVal;
+  testVal;
 }
 
 /**
@@ -76,8 +76,8 @@ type anyAndU = any & unknown;
 /**
  * Operator 사용
  */
-let number1: unknown = 10;
-let number2: unknown = 20;
+const number1: unknown = 10;
+const number2: unknown = 20;
 
 // number 1 + number2;
 // number 1 - number2;

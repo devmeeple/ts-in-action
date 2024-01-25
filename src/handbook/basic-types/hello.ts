@@ -9,7 +9,7 @@ console.log('Merry Christmas Mr.Lawrence');
  * @param song
  */
 function playMusic(person: string, song: string) {
-    console.log(`현재 듣는 노래는 ${person}의 ${song} 입니다.`);
+  console.log(`현재 듣는 노래는 ${person}의 ${song} 입니다.`);
 }
 
 playMusic('사카모토 류이치', 'Merry Christmas Mr.Lawrence');

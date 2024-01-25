@@ -3,9 +3,9 @@
  *
  * 타입 추론
  */
-let stringType = 'string';
+const stringType = 'string';
 let booleanType = true;
-let numberType = 30;
+const numberType = 30;
 
 booleanType = false;
 
@@ -14,22 +14,22 @@ booleanType = false;
 const constStringType = 'const string';
 const constBooleanType = true;
 
-let yuJin = {
-    name: '안유진',
-    year: 2003,
+const yuJin = {
+  name: '안유진',
+  year: 2003,
 };
 
 const yuJin2 = {
-    name: '안유진',
-    year: 2003,
+  name: '안유진',
+  year: 2003,
 };
 
 yuJin2.name = '미플';
 console.log(yuJin2);
 
 const yuJin3 = {
-    name: '안유진' as const,
-    year: 2003 as const,
+  name: '안유진' as const,
+  year: 2003 as const,
 };
 
 // yuJin3.name = '미플';
@@ -39,8 +39,8 @@ console.log(yuJin2.name);
 /**
  * Array
  */
-let numbers = [1, 2, 3, 4, 5];
-let numbersAndString = [1, 2, 3, '4', '5', '6'];
+const numbers = [1, 2, 3, 4, 5];
+const numbersAndString = [1, 2, 3, '4', '5', '6'];
 
 // numbers.push('6');
 const number = numbers[0];

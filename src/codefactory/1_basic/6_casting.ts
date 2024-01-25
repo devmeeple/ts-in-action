@@ -9,12 +9,12 @@ const testNumber = 3;
 console.log(meeple.toUpperCase());
 // console.log(testNumber.toUpperCase());
 
-let sampleNumber: any = 5;
+const sampleNumber: any = 5;
 // console.log(sampleNumber.toUpperCase());
-let stringVar = sampleNumber as string;
+const stringVar = sampleNumber as string;
 
 console.log(typeof (sampleNumber as string));
 
-let number = 5;
+const number = 5;
 
 console.log((number as any).toUpperCase());
