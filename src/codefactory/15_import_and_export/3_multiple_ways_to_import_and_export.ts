@@ -17,4 +17,4 @@
 // console.log(rose);
 
 // baseUrl
-import { IdolModel} from 'codefactory/15_import_and_export/2_export_1';
+import { IdolModel} from 'src/codefactory/15_import_and_export/2_export_1';
