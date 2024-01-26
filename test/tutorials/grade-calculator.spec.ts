@@ -1,8 +1,15 @@
 class GradeCalculator {
-  private readonly score;
+  private readonly score: number;
 
-  constructor(score: number) {
-    this.score = score;
+  private constructor(score: number) {
+    this.score = Math.floor(score / 10);
+  }
+
+  static of(score: number) {
+    if (score < 0 || score > 100) {
+      throw new Error('점수는 0점 미만 100점 초과할 수 없습니다');
+    }
+    return new GradeCalculator(score);
   }
 
   /**
@@ -11,16 +18,23 @@ class GradeCalculator {
    * 2) 관련 로직만 함수로 분리
    * 3) 객체로 분리
    */
+
+  /**
+   * 점수를 계산하는 로직과 점수를 얻는 로직을 분리
+   */
   calculateGrades() {
-    if (this.score >= 90) return ScoreGrades.A;
-
-    if (this.score >= 80) return ScoreGrades.B;
-
-    if (this.score >= 70) return ScoreGrades.C;
-
-    if (this.score >= 60) return ScoreGrades.D;
-
-    return ScoreGrades.F;
+    switch (this.score) {
+      case 9:
+        return ScoreGrades.A;
+      case 8:
+        return ScoreGrades.B;
+      case 7:
+        return ScoreGrades.C;
+      case 6:
+        return ScoreGrades.D;
+      default:
+        return ScoreGrades.F;
+    }
   }
 }
 
@@ -35,7 +49,7 @@ enum ScoreGrades {
 describe('학점 계산기', () => {
   it('[A] 점수가 90점 이상', () => {
     // given
-    const gradeCalculator = new GradeCalculator(90);
+    const gradeCalculator = GradeCalculator.of(90);
 
     // then
     expect(gradeCalculator.calculateGrades()).toEqual('A');
@@ -43,7 +57,7 @@ describe('학점 계산기', () => {
 
   it('[B] 점수가 80점 이상 90점 미만', () => {
     // given
-    const gradeCalculator = new GradeCalculator(85);
+    const gradeCalculator = GradeCalculator.of(85);
 
     // then
     expect(gradeCalculator.calculateGrades()).toEqual('B');
@@ -51,14 +65,14 @@ describe('학점 계산기', () => {
 
   it('[C] 70점 이상 80점 미만', () => {
     // given
-    const gradeCalculator = new GradeCalculator(75);
+    const gradeCalculator = GradeCalculator.of(75);
 
     // then
     expect(gradeCalculator.calculateGrades()).toEqual('C');
   });
   it('[D] 60점 이상 70점 미만', () => {
     // given
-    const gradeCalculator = new GradeCalculator(65);
+    const gradeCalculator = GradeCalculator.of(65);
 
     // then
     expect(gradeCalculator.calculateGrades()).toEqual('D');
@@ -66,9 +80,18 @@ describe('학점 계산기', () => {
 
   it('[F]: 60점 미만', () => {
     // given
-    const gradeCalculator = new GradeCalculator(55);
+    const gradeCalculator = GradeCalculator.of(55);
 
     // then
     expect(gradeCalculator.calculateGrades()).toEqual('F');
+  });
+
+  it('[에러] 점수 범위에 숫자를 입력하지 않으면 에러가 발생한다', () => {
+    expect(() => GradeCalculator.of(101)).toThrow(
+      new Error('점수는 0점 미만 100점 초과할 수 없습니다'),
+    );
+    expect(() => GradeCalculator.of(-1)).toThrow(
+      new Error('점수는 0점 미만 100점 초과할 수 없습니다'),
+    );
   });
 });
