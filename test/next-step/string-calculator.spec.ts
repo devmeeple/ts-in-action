@@ -1,10 +1,23 @@
 class StringCalculator {
-  add(str: string) {
+  add(text: string) {
     // 정규표현식을 사용하여 구분자 추가
     const regex = /[,:]/;
-    const numbers = str.split(regex).map(Number);
+    const numbers = text.split(regex).map(Number);
+
+    this.validateNonNegativeNumbers(numbers);
+
     // 리듀서(acc: 누적값, curr: 현재값) { 반환 값 }, acc 의 초기
     return numbers.reduce((acc, curr) => acc + curr, 0);
+  }
+
+  /**
+   * 문자열의 값에 음수가 없는지 확인
+   */
+  private validateNonNegativeNumbers(numbers: number[]) {
+    const negativeNumbers = numbers.filter((n) => n < 0);
+    if (negativeNumbers.length > 0) {
+      throw new Error('음수를 입력할 수 없습니다');
+    }
   }
 }
 
@@ -30,5 +43,9 @@ describe('StringCalculatorTest', () => {
   });
 
   it.todo('커스텀 구분자를 지정');
-  it.todo('음수를 전달하는 경우 에러가 발생한다');
+  it('음수를 전달하는 경우 에러가 발생한다', () => {
+    expect(() => cal.add('-1,2,3')).toThrow(
+      new Error('음수를 입력할 수 없습니다'),
+    );
+  });
 });
