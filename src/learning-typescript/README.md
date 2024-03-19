@@ -25,4 +25,5 @@
 
 # 1부: 타입스크립트 배경지식 이해
 
-- [자바스크립트에서 타입스크립트로](./from-javascript-to-typescript/README.md)
+- [1장 자바스크립트에서 타입스크립트로](./from-javascript-to-typescript/README.md)
+- [2장 타입시스템](./type-system/README.md)
