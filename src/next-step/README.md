@@ -28,5 +28,3 @@ String[] numbers = text.split(",|:");
 ```typescript
 text.split(/,|:/);
 ```
-
-# 커스텀 구분자

@@ -1,4 +1,4 @@
-import { StringCalculator } from '../../src/next-step/string-calculator';
+import { StringCalculator } from '../../../src/next-step/string-calculator/string-calculator';
 
 describe('StringCalculatorTest', () => {
   let cal: StringCalculator;
