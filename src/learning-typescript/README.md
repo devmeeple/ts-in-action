@@ -39,5 +39,6 @@
 > 선언하는 방법을 알아보고 타입스크립트 배열의 특징, 인터페이스와 클래스 사용법, 더 정확한 타입 작성을 위한 타입 제한자와 제너릭을 살펴봅시다.
 
 - [5장 함수](./05-functions/README.md)
-- [6장 튜플](06-arrays/README.md)
-- [7장 인터페이스](./)
+- [6장 배열](06-arrays/README.md)
+- [7장 인터페이스](07-interfaces/README.md)
+- [8장 클래스](08-classes/README.md)
