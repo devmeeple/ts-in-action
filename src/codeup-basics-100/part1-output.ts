@@ -1,4 +1,4 @@
-export class ProblemPart1Output {
+export class Part1Output {
   printHello() {
     return 'Hello';
   }

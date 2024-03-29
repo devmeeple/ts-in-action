@@ -1,8 +1,8 @@
-import { ProblemPart1Output } from '../../src/codeup-basics-100/problem-part1-output';
+import { Part1Output } from '../../src/codeup-basics-100/part1-output';
 
 describe('CodeUp [1001 ~ 1008] 기초-출력', () => {
   // sut는 검증하려는 대상을 의미
-  const sut = new ProblemPart1Output();
+  const sut = new Part1Output();
 
   describe('[1001] 출력하기01', () => {
     it('Hello 를 출력한다', () => {
