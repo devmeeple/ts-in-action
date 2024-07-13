@@ -128,6 +128,69 @@ const logUserInfo = (
 
 ### 나머지 매개변수(Rest Parameters)
 
+# 5. Unions, Literals and Narrowing
+
+## 유니온 타입(Union Types)
+
+```typescript
+const logId = (id: string | number) => {
+  console.log(id);
+}
+
+type Id = string | number;
+
+function signUp(id: Id) {
+  console.log(id);
+}
+```
+
+id는 string 또는 number 값을 가질 수 있다.
+
+## 축소(Narrowing)
+
+Narrowing이란 범위를 좁히는 방법이다.
+
+### 1. typeof로 범위 좁히기(Narrowing with typeof)
+
+```typescript
+const getAlbumYear = (year: string | number) => {
+  if (typeof year === 'string') {
+    console.log(`The album was released in ${year.toUpperCase()}.`); // `year` is string
+  } else if (typeof year === 'number') {
+    console.log(`The album was released in ${year.toFixed(0)}.`); // `year` is number
+  }
+};
+```
+
+```typescript
+const getAlbumYear = (year: string | number | boolean) => {
+  if (typeof year === 'string') {
+    console.log(`The album was released in ${year.toUpperCase()}.`); // `year` is string
+  } else if (typeof year === 'number') {
+    console.log(`The album was released in ${year.toFixed(0)}.`); // `year` is number
+  }
+
+  console.log(year); // `year` is string | number | boolean
+};
+```
+
+블록 범위로 동작하기 때문에 조건문을 벗어난 `year` 변수는 `string | number | boolean`으로 추론한다.
+
+## unknown and never
+
+[unknown <출처: Total TypeScript Essentials>](./065-introduction-to-unknown.explainer_ohm9pd.png)
+
+`any`와 비슷해보이는 `unknown` 둘의 차이는 무엇일까?
+
+- unknown: 어떤 값도 할당할 수 없다. 무엇인지 모른다. 알 수 없다.
+- any: 어떤 값이어도 상관없다.
+
+### never
+
+[never <출처: Total TypeScript Essentials>](./067-introduction-to-never.explainer_ktradt.png)
+
+일어나지 않는 일, 불가능하다. 직접 선언하는 경우는 거의 없다.
+
 **<참고 자료>**
 
-1. [Matt Pocock 'Total TypeScript'](https://www.totaltypescript.com/books/total-typescript-essentials)
+1. [Matt Pocock 'Total TypeScript Essentials'](https://www.totaltypescript.com/books/total-typescript-essentials)
