@@ -191,6 +191,73 @@ const getAlbumYear = (year: string | number | boolean) => {
 
 일어나지 않는 일, 불가능하다. 직접 선언하는 경우는 거의 없다.
 
+# 6. Objects
+
+## 객체 확장(Extending Objects)
+
+```typescript
+type Album = {
+  title: string;
+  artist: string;
+  releaseYear: number;
+};
+
+type SalesData = {
+  unitsSold: number;
+  revenue: number;
+};
+
+type AlbumSales = Album & SalesData;
+```
+
+## 인터페이스(Interfaces)
+
+인터페이스(interface)와 타입(type) 키워드는 비슷해 보이지만 실제로는 다르다.
+
+### 인터페이스 확장(interface extends)
+
+```typescript
+interface Album {
+  title: string;
+  artist: string;
+  releaseYear: number;
+}
+
+interface StudioAlbum extends Album {
+  studio: string;
+  producer: string;
+}
+
+interface LiveAlbum extends Album {
+  concertVenue: string;
+  concertDate: Date;
+}
+```
+
+인터페이스는 상속이 가능하다. 상속을 사용해 구체적인 타입을 만들 수 있다.
+
+```typescript
+interface BoxSet extends StudioAlbum, LiveAlbum {
+  numberOfDiscs: number;
+}
+```
+
+또한 다중 상속도 가능하다.
+
+인터페이스 확장은 오류확인 및 작업속도 성능이 좋다. (인터페이스로 모든 타입을 정의해야 한다는 이야기가 아니다) 다른 타입 유형을 확장해야 하는 경우
+인터섹션보다 인터페이스 확장 선택을 권장한다.
+
+## 타입과 인터페이스(Types vs Interfaces)
+
+타입과 인터페이스 중 어떤것을 사용하는게 좋을까? 이는 의견이 갈리는 문제다.
+
+```typescript
+type Union = string | number;
+```
+
+인터페이스는 중복선언을 허용하고 선언된 정보가 포함된 하나의 인터페이스를 만든다. 하지만 타입은 중복 선언을 허용하지 않는다.
+**저자는 타입을 기본으로 사용하고 인터페이스 확장이 필요한 경우 인터페이스를 사용한다.**
+
 **<참고 자료>**
 
 1. [Matt Pocock 'Total TypeScript Essentials'](https://www.totaltypescript.com/books/total-typescript-essentials)
