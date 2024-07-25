@@ -10,7 +10,8 @@
 
 ## 선수지식 및 유의사항
 
-* Microsoft Learn JavaScript tutorial 또는 JavaScript at the Mozilla Web Docs
+* [Microsoft Learn JavaScript tutorial](https://learn.microsoft.com/en-us/shows/beginners-series-to-javascript/) 또는
+  [JavaScript at the Mozilla Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * 다른 언어 사용경험이 있다면 핸드북을 통해 JavaScript를 배운다.
 
 **<참고 자료>**
