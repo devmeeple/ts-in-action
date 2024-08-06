@@ -1,14 +1,14 @@
 export class Food {
   constructor(
-    private _price: number,
-    private _originCost: number, // 원가
+    private price: number,
+    private originCost: number, // 원가
   ) {}
 
-  get price(): number {
-    return this._price;
+  calculateRevenue() {
+    return this.price;
   }
 
-  get originCost(): number {
-    return this._originCost;
+  calculateProfit() {
+    return this.price - this.originCost;
   }
 }
