@@ -1,10 +1,14 @@
-/**
- * 한번 생성된 Color 인스턴스의 r,g,b 값은 변하지 않는다
- */
 export class Color {
   constructor(
     public readonly r: number,
     public readonly g: number,
     public readonly b: number,
   ) {}
+
+  randomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return new Color(r, g, b);
+  }
 }
