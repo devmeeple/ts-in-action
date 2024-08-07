@@ -1,9 +1,9 @@
-import { Food } from './food';
+import { Calculable } from './calculable.interface';
 
-export class Order {
+export class Order implements Calculable {
   private transactionFeePercent = 0.03; // 결제 수수료 3%
 
-  constructor(private foods: Food[]) {}
+  constructor(private foods: Calculable[]) {}
 
   calculateRevenue() {
     let revenue = 0;

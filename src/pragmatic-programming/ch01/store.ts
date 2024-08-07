@@ -1,8 +1,8 @@
-import { Order } from './order';
+import { Calculable } from './calculable.interface';
 
-export class Store {
+export class Store implements Calculable {
   constructor(
-    private orders: Order[],
+    private orders: Calculable[],
     private rentalFee: number, // 임대료
   ) {}
 
