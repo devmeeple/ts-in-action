@@ -8,15 +8,7 @@ export class Product {
     return this._name;
   }
 
-  set name(value: string) {
-    this._name = value;
-  }
-
   get price(): number {
     return this._price;
-  }
-
-  set price(value: number) {
-    this._price = value;
   }
 }

@@ -3,13 +3,10 @@ import { Product } from './product';
 
 export class Shop {
   sell(account: Account, product: Product) {
-    const price = product.price;
-    const mileage = account.money;
-    if (mileage >= price) {
-      account.money = mileage - price;
+    if (account.canAfford(product.price)) {
+      account.withdraw(product.price);
       return `${product.name}를 구매했습니다.`;
     }
-
     return `잔액이 부족합니다.`;
   }
 }
