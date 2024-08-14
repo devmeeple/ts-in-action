@@ -1,3 +1,5 @@
+import { Order, processOrder } from '../../src/refactoring/early-return';
+
 describe('[Early Return] 주문 처리 시스템', () => {
   it('조건을 모두 만족하면 주문에 성공한다', () => {
     // given
@@ -75,32 +77,3 @@ describe('[Early Return] 주문 처리 시스템', () => {
     );
   });
 });
-
-interface Order {
-  isPaid: boolean;
-  items: number;
-  isShipped: boolean;
-  customerIsVerified: boolean;
-}
-
-function processOrder(order: Order) {
-  let result = '';
-  if (order.isPaid) {
-    if (order.items > 0) {
-      if (order.isShipped) {
-        if (order.customerIsVerified) {
-          result = '주문이 성공적으로 처리되었습니다';
-        } else {
-          throw new Error('오류: 확인되지 않은 고객입니다');
-        }
-      } else {
-        throw new Error('오류: 배송되지 않은 주문입니다');
-      }
-    } else {
-      throw new Error('오류: 찾을 수 없는 항목입니다');
-    }
-  } else {
-    throw new Error('오류: 잔액이 부족합니다');
-  }
-  return result;
-}
