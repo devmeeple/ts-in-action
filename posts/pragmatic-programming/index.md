@@ -106,3 +106,94 @@ API 통신, 데이터베이스 통신을 위해 사용되는 객체가 아니라
 > JPA 엔티티는 영속성 객체를 만들기 위한 도구다.
 
 JPA 엔티티라기보단 '영속성 객체'가 적절하다. 이때 영속성이란 데이터가 영원히 이어지도록 어딘가에 저장하고 불러오는 것을 의미한다.
+
+# 14. 테스트 대역
+
+테스트 대역(test double)이란 테스트를 위해 만들어진 가짜 객체나 컴포넌트를 의미한다. 범위를 의미하지 않는다. 영화 주연 배우대신 위험한 장면을 촬영하는 스턴트맨에서 유래됐다.
+
+* 테스트 대역을 사용하면 테스트 크기를 바꿀 수 있다. 예를 들어 API 호출이 필요했던 코드를 호출 없이 실행한다. (대형 테스트 -> 소형 테스트)
+* 다양한 상황을 연출할 수 있다. (정상 상황, 장애 상황 등)
+* 남용은 금지다. 실제 구현과 테스트 간의 거리감이 생길 수 있다. 밸런스가 중요하다.
+
+영화에서도 CG, 스턴트맨 등 대역으로 다양한 방법을 사용한다. 소프트웨어 세계 또한 다양한 대역을 사용한다.
+
+<테스트 대역의 5가지 유형>
+
+| 유형    | 설명                                    |
+|-------|---------------------------------------|
+| Dummy | 아무런 동작을 하지 않는다.                       |
+| Stub  | 지정한 값을 반환한다.                          |
+| Fake  | 자체적인 로직을 가진다.                         |
+| Mock  | 아무런 동작을 하지 않는다. 대신 어떤 행동이 호출됐는지 검증한다. |
+| Spy   | 실제 객체와 똑같이 행동한다. 그리고 모든 행동 호출을 기록한다.  |
+
+## 14.1 Dummy
+
+```typescript
+export class DummyVerificationEmailSender implements VerificationEmailSender {
+  send(): void {
+    // do noting...
+  }
+}
+```
+
+Dummy(더미) 객체는 코드가 정상적으로 동작하기 위한 역할만 맡는 대역이다.
+
+## 14.2 Stub
+
+Stub(스텁)은 실제 객체의 응답을 최대한 비슷하게 따라 하는 대역이다. 원본 응답을 복제해 똑같은 응답을 미리 준비하고 이를 바로 반환한다. 외부 연동을 하는 컴포넌트나 클라이언트를 대체하는데
+주로 사용한다. 예를 들어, 외부 시스템의 API 호출 결과를 받아서 처리할 때 Stub 객체를 사용한다.
+
+> ts-mockito 같은 라이브러리의 도움을 받아 Stub 객체를 쉽게 만들 수 있다. 하지만 이런 라이브러리 없이도 만들 수 있다는 점을 명심하자.
+
+<findByEmail 메서드를 호출한 결과, 데이터가 있는 케이스를 반환하는 Stub 클래스>
+
+```typescript
+export class StubExistUserRepository implements UserRepository {
+
+  async findByEmail(email: string): Promise<User> {
+    return {
+      id: 1,
+      email,
+      nickname: 'foobar',
+      status: UserStatus.ACTIVE,
+      verificationCode: 'aaaaaaaaaaaaaaaa',
+    }
+  }
+
+  save(user: User): User {
+    return {
+      id: 1,
+      email: user.email,
+      nickname: user.nickname,
+      status: user.status,
+      verificationCode: user.verificationCode,
+    }
+  }
+}
+```
+
+<findByEmail 메서드를 호출한 결과, 빈 값을 반환하는 Stub 클래스>
+
+```typescript
+export class StubExistUserRepository implements UserRepository {
+
+  async findByEmail(email: string): Promise<User | null> {
+    return null;
+  }
+
+  save(user: User): User {
+    return {
+      id: 1,
+      email: user.email,
+      nickname: user.nickname,
+      status: user.status,
+      verificationCode: user.verificationCode,
+    }
+  }
+}
+```
+
+**<참고 자료>**
+
+* [이동욱(향로) 'jest.mock 보다 ts-mockito 사용하기 (feat. Node.js)](https://jojoldu.tistory.com/638)
