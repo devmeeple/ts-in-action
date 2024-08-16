@@ -8,7 +8,7 @@ tags:
 series: 
 ---
 
-IntelliJ IDEA 2024.2가 정식으로 출시됐다. 업데이트된 여러 기능 중 'TypeScript 파일을 직접 실행 및 디버그'가 가장 흥미로웠다. 바로 업데이트하고 확인해 봤지만 문제가 발생했다.
+IntelliJ IDEA 2024.2가 정식으로 출시됐다. 업데이트된 여러 기능 중 'TypeScript 파일을 직접 실행 및 디버그'가 가장 흥미로웠다. 바로 업데이트하고 실행했을 때 문제가 발생했다.
 
 ```shell 
 node:internal/modules/run_main:129
@@ -18,7 +18,7 @@ Error: tsx must be loaded with --import instead of --loader
 The --loader flag was deprecated in Node v20.6.0 and v18.19.0
 ``` 
 
-문제가 발생한 이유는 `Volta` 환경에서만 발생했다. 해결하기 위해서는 표준 Node.js 인터프리터를 사용해야 한다.
+문제는 `Volta` 환경에서만 발생했다. 해결하기 위해서는 표준 Node.js 인터프리터를 사용해야 한다.
 
 ## Volta 제거하기
 
