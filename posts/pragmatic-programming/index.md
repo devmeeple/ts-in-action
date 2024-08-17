@@ -219,8 +219,8 @@ TypeORM의 동작을 최대한 흉내 내서 `FakeUserRepository`라는 클래�
 
 ## 14.4 Mock
 
-**Mock(목)은 메서드 호출 여부를 검증하는 객체다.** 최근에는 Mock을 객체로 테스트 대역 객체로 바라보지 않고, '테스트 대역' 자체를 대표하는 단어가 돼버렸다. 테스트를 만들 때 테스트 대역을 이용하는
-방식을 Mockist, 실제 코드를 이용해 테스트하는 방식을 Classist라고 부른다.
+**Mock(목)은 메서드 호출을 기록하고 상호 작용이 일어났는지 확인하는 객체다** 최근에는 Mock을 객체로 테스트 대역 객체로 바라보지 않고, '테스트 대역' 자체를 대표하는 단어가 돼버렸다. 테스트를 만들 때
+테스트 대역을 이용하는 방식을 Mockist, 실제 코드를 이용해 테스트하는 방식을 Classist라고 부른다.
 
 - Mock은 메서드 호출 및 상호작용을 기록한다.
 - Mock은 어떤 객체와 상호 작용이 일어났는지 기록한다.
@@ -256,6 +256,35 @@ export class MockVerificationEmailSender implements VerificationEmailSender {
 
   send(user: User): void {
     this.isSendCalled = true;
+  }
+}
+```
+
+## 14.5 Spy
+
+> Mock vs. Spy
+
+Spy(스파이)는 상호 작용을 검증할 때 주로 사용한다. Mock과 비슷하다고 생각할 수 있다. 하지만 내부 구현이 진짜, 가짜 구현체라는 차이를 가진다.
+Mock으로 만들어진 객체는 Dummy, Stub처럼 동작한다. 반면 Spy로 만들어진 객체는 기본 동작이 실제 객체 코드와 같다. 실재 객체의 메서드 구현에 메서드 호출을 기록하는
+부수적인 기능들이 추가된다. (물론, 일부 메서드는 Stub으로 만들어 고정된 응답을 반환하도록 만들 수 있다.)
+
+영화에 스파이를 생각하면 쉽게 이해할 수 있다. 팀인것처럼 행동하지만 쥐도새도 모르게 정보를 흘린다.
+
+컴포넌트를 상속해서 Spy를 만들 수 있다. 인터페이스를 구현(implements)하는 것이 아닌 상속(extends)하는 것을 주목하자. 더불어 프록시 패턴을 이용해 Spy를 만들 수 있다.
+
+```typescript
+export class SpyUserRepository extends UserRepositoryImpl {
+  findByEmailCallCount = 0;
+  saveCallCount = 0;
+
+  findByEmail(email: string): Promise<User | undefined> {
+    this.findByEmailCallCount++;
+    return super.findByEmail(email);
+  }
+
+  save(user: User): User {
+    this.saveCallCount++;
+    return super.save(user);
   }
 }
 ```
