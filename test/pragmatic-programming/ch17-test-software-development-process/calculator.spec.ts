@@ -1,10 +1,6 @@
 class Calculator {
   static subAtoB(a: number, b: number) {
-    let result = 0;
-    for (let i = a; i <= b; i++) {
-      result += i;
-    }
-    return result;
+    return ((a + b) * (b - a + 1)) / 2;
   }
 }
 
